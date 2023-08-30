@@ -1,0 +1,89 @@
+The core classes, functions, and methods that will be necessary are:
+
+1. `NQueens` class: This class will encapsulate the logic for solving the n-queens problem.
+    - `__init__(self, size: int)`: Initializes an instance of the `NQueens` class.
+    - `solve(self)`: Solves the n-queens problem.
+    - `is_safe(self, board: List[List[int]], row: int, col: int)`: Checks if a queen can be placed at the given position.
+    - `solve_n_queens_util(self, board: List[List[int]], col: int)`: Utility method to solve the n-queens problem.
+    - `print_solution(self, board: List[List[int]])`: Prints the solution.
+
+2. `test_n_queens.py`: This file will contain the unit tests for the `NQueens` class.
+    - `test_solve()`: Tests the `solve` method of the `NQueens` class.
+    - `test_is_safe()`: Tests the `is_safe` method of the `NQueens` class.
+
+Now, let's write the code for each file.
+
+`n_queens.py`
+```python
+from typing import List
+
+class NQueens:
+    def __init__(self, size: int):
+        self.size = size
+        self.board = [[0]*size for _ in range(size)]
+
+    def solve(self):
+        if not self.solve_n_queens_util(self.board, 0):
+            print("Solution does not exist")
+            return False
+        self.print_solution(self.board)
+        return True
+
+    def is_safe(self, board: List[List[int]], row: int, col: int):
+        for i in range(col):
+            if board[row][i] == 1:
+                return False
+        for i, j in zip(range(row, -1, -1), range(col, -1, -1)):
+            if board[i][j] == 1:
+                return False
+        for i, j in zip(range(row, self.size, 1), range(col, -1, -1)):
+            if board[i][j] == 1:
+                return False
+        return True
+
+    def solve_n_queens_util(self, board: List[List[int]], col: int):
+        if col >= self.size:
+            return True
+        for i in range(self.size):
+            if self.is_safe(board, i, col):
+                board[i][col] = 1
+                if self.solve_n_queens_util(board, col + 1):
+                    return True
+                board[i][col] = 0
+        return False
+
+    def print_solution(self, board: List[List[int]]):
+        for i in range(self.size):
+            for j in range(self.size):
+                print(board[i][j], end = " ")
+            print()
+```
+
+`test_n_queens.py`
+```python
+import pytest
+from n_queens import NQueens
+
+def test_solve():
+    n_queens = NQueens(4)
+    assert n_queens.solve() == True
+
+def test_is_safe():
+    n_queens = NQueens(4)
+    assert n_queens.is_safe(n_queens.board, 0, 0) == True
+```
+
+`requirements.txt`
+```
+pytest==6.2.4
+```
+
+To run the program, you can use the following command:
+```
+python n_queens.py
+```
+
+To run the tests, you can use the following command:
+```
+pytest test_n_queens.py
+```
