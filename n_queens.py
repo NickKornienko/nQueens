@@ -47,13 +47,12 @@ def main():
     # take user input and make sure it is an integer between 1 - 10, then create a new NQueens object of that size
     while True:
         try:
-            size = int(input("Enter a number between 1 - 10: "))
+            size = int(input("Enter a number between 1 and 10: "))
             if size < 1 or size > 10:
                 raise ValueError
             break
         except ValueError:
-            print("Invalid input, please try again.")
-
+            print("Invalid input. Try again.")
     n_queens = NQueens(size)
     n_queens.solve()
 

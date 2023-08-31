@@ -3,7 +3,6 @@ from n_queens import NQueens
 
 
 def test_solve():
-    # test that the solve method returns True for interers 1 - 10
     for i in range(1, 11):
         n_queens = NQueens(i)
         if i == 2 or i == 3:
