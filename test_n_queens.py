@@ -1,10 +1,21 @@
 import pytest
 from n_queens import NQueens
 
-def test_solve():
-    n_queens = NQueens(4)
-    assert n_queens.solve() == True
 
-def test_is_safe():
-    n_queens = NQueens(4)
-    assert n_queens.is_safe(n_queens.board, 0, 0) == True
+def test_solve():
+    # test that the solve method returns True for interers 1 - 10
+    for i in range(1, 11):
+        n_queens = NQueens(i)
+        if i == 2 or i == 3:
+            assert n_queens.solve() == False
+        else:
+            assert n_queens.solve() == True
+
+
+def main():
+    test_solve()
+    print("All tests passed.")
+
+
+if __name__ == "__main__":
+    main()

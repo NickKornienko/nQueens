@@ -1,5 +1,6 @@
 from typing import List
 
+
 class NQueens:
     def __init__(self, size: int):
         self.size = size
@@ -38,6 +39,24 @@ class NQueens:
     def print_solution(self, board: List[List[int]]):
         for i in range(self.size):
             for j in range(self.size):
-                print(board[i][j], end = " ")
+                print(board[i][j], end=" ")
             print()
-    
+
+
+def main():
+    # take user input and make sure it is an integer between 1 - 10, then create a new NQueens object of that size
+    while True:
+        try:
+            size = int(input("Enter a number between 1 - 10: "))
+            if size < 1 or size > 10:
+                raise ValueError
+            break
+        except ValueError:
+            print("Invalid input, please try again.")
+
+    n_queens = NQueens(size)
+    n_queens.solve()
+
+
+if __name__ == "__main__":
+    main()

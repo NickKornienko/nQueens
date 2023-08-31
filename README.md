@@ -9,7 +9,6 @@ The core classes, functions, and methods that will be necessary are:
 
 2. `test_n_queens.py`: This file will contain the unit tests for the `NQueens` class.
     - `test_solve()`: Tests the `solve` method of the `NQueens` class.
-    - `test_is_safe()`: Tests the `is_safe` method of the `NQueens` class.
 
 Now, let's write the code for each file.
 
