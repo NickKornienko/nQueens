@@ -1,5 +1,3 @@
-The core classes, functions, and methods that will be necessary are:
-
 1. `NQueens` class: This class will encapsulate the logic for solving the n-queens problem.
     - `__init__(self, size: int)`: Initializes an instance of the `NQueens` class.
     - `solve(self)`: Solves the n-queens problem.
@@ -10,6 +8,3 @@ The core classes, functions, and methods that will be necessary are:
 2. `test_n_queens.py`: This file will contain the unit tests for the `NQueens` class.
     - `test_solve()`: Tests the `solve` method of the `NQueens` class.
 
-Now, let's write the code for each file.
-
-`n_queens.py`
